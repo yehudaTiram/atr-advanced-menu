@@ -56,14 +56,16 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
 	        '_wpnonce',
 	    );
 	
-	    $original_title = '';
+	    //$original_title = '';
+		$original_title = false;
 	    if ( 'taxonomy' == $item->type ) {
 	        $original_title = get_term_field( 'name', $item->object_id, $item->object, 'raw' );
 	        if ( is_wp_error( $original_title ) )
 	            $original_title = false;
 	    } elseif ( 'post_type' == $item->type ) {
 	        $original_object = get_post( $item->object_id );
-	        $original_title = $original_object->post_title;
+	        //$original_title = $original_object->post_title;
+			$original_title = get_the_title( $original_object->ID );
 	    }
 	
 	    $classes = array(
@@ -175,11 +177,11 @@ class Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
 	            </p>
 				
 
-<?php
-// Call the custom fields
-do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
-// End call the custom fields
-?>					
+				<?php
+				// Call the custom fields
+				do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
+				// End call the custom fields
+				?>					
 
 	            <div class="menu-item-actions description-wide submitbox">
 	                <?php if( 'custom' != $item->type && $original_title !== false ) : ?>
@@ -237,7 +239,7 @@ function atr_saveitem_callback(){
  
 	// set the right menu for it (yes, menus are taxonomies)
 	wp_set_object_terms( $my_post_id, intval($_POST['menu']), 'nav_menu', $append = false );
- 
+	
 	// post meta parameters
 	$target = ($_POST['target'] == 'checked') ? '_blank' : ''; 
 	update_post_meta( $my_post_id, '_menu_item_target', $target);
@@ -246,11 +248,11 @@ function atr_saveitem_callback(){
 	update_post_meta( $my_post_id, '_menu_item_xfn', esc_attr($_POST['xfn']));
 	update_post_meta( $my_post_id, '_menu_item_url', esc_url($_POST['url']));
 	update_post_meta( $my_post_id, '_menu_item_subtitle', sanitize_text_field($_POST['subtitle']));
-	update_post_meta( $my_post_id, '_menu_item_customimage', esc_attr($_POST['customimage']));
-	update_post_meta( $my_post_id, '_menu_item_chooseimage', esc_attr($_POST['chooseimage']));
-        update_post_meta( $my_post_id, '_menu_item_panelclass', esc_attr($_POST['panelclass']));
-        update_post_meta( $my_post_id, '_menu_item_iconclass', esc_attr($_POST['iconclass']));
-        update_post_meta( $my_post_id, '_menu_item_content_from_post', esc_attr($_POST['content_from_post']));
+	update_post_meta( $my_post_id, '_menu_item_customimage', esc_url($_POST['customimage']));
+	update_post_meta( $my_post_id, '_menu_item_chooseimage', esc_attr($_POST['chooseimage'])); // a number to select between image options
+        update_post_meta( $my_post_id, '_menu_item_panelclass', sanitize_html_classes($_POST['panelclass']));
+        update_post_meta( $my_post_id, '_menu_item_iconclass', sanitize_html_classes($_POST['iconclass']));
+        update_post_meta( $my_post_id, '_menu_item_content_from_post', intval($_POST['content_from_post']));
         $remttl = ($_POST['remttl'] == 'checked') ? 'remove-title' : '';
         update_post_meta( $my_post_id, '_menu_item_remttl', $remttl);
         $postexcerpt = ($_POST['postexcerpt'] == 'checked') ? 'use-excerpt' : '';
@@ -259,7 +261,33 @@ function atr_saveitem_callback(){
         update_post_meta( $my_post_id, '_menu_item_postfeatimg', $postfeatimg);	               
 	die();
 }
- 
+
+
+
+    /** TBD put this finc in util file
+     * sanitize_html_class works for a single class
+     * We want to have more than one calss in <b class="fa fa-info"></b> 
+     * to validate both fa fa-info,
+     * Because sanitize_html_class doesn't allow spaces.
+     *
+     * @uses   sanitize_html_class
+     * @param  (mixed: string/array) $class   "blue hedgehog goes shopping" or array("blue", "hedgehog", "goes", "shopping")
+     * @param  (mixed) $fallback Anything you want returned in case of a failure
+     * @return (mixed: string / $fallback )
+     */
+    function sanitize_html_classes($class, $fallback = null) {
+        // Explode it, if it's a string
+        if (is_string($class)) {
+            $class = explode(" ", $class);
+        }
+        if (is_array($class) && count($class) > 0) {
+            $class = array_map("sanitize_html_class", $class);
+            return implode(" ", $class);
+        } else {
+            return sanitize_html_class($class, $fallback);
+        }
+    }
+	
 if( is_admin() ) {
 	add_action('wp_ajax_saveitem', 'atr_saveitem_callback');
 }

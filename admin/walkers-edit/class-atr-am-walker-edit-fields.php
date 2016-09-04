@@ -178,7 +178,7 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
         /* New fields insertion ends here */
     }
 
-    /**
+    /** TBD put this finc in util file
      * sanitize_html_class works for a single class
      * We want to have more than one calss in <b class="fa fa-info"></b> 
      * to validate both fa fa-info,
@@ -189,7 +189,7 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
      * @param  (mixed) $fallback Anything you want returned in case of a failure
      * @return (mixed: string / $fallback )
      */
-    function sanitize_html_classes($class, $fallback = null) {
+    public function sanitize_html_classes($class, $fallback = null) {
         // Explode it, if it's a string
         if (is_string($class)) {
             $class = explode(" ", $class);
@@ -211,12 +211,12 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
      * @return      void
      */
     function atr_am_add_custom_nav_fields($menu_item) {
-        $menu_item->subtitle = get_post_meta($menu_item->ID, '_menu_item_subtitle', true);
-        $menu_item->customimage = get_post_meta($menu_item->ID, '_menu_item_customimage', true);
-        $menu_item->chooseimage = get_post_meta($menu_item->ID, '_menu_item_chooseimage', true);
-        $menu_item->panelclass = get_post_meta($menu_item->ID, '_menu_item_panelclass', true);
-        $menu_item->iconclass = get_post_meta($menu_item->ID, '_menu_item_iconclass', true);
-        $menu_item->content_from_post = get_post_meta($menu_item->ID, '_menu_item_content_from_post', true);
+        $menu_item->subtitle = sanitize_text_field(get_post_meta($menu_item->ID, '_menu_item_subtitle', true));
+        $menu_item->customimage = esc_url(get_post_meta($menu_item->ID, '_menu_item_customimage', true));
+        $menu_item->chooseimage = esc_attr(get_post_meta($menu_item->ID, '_menu_item_chooseimage', true));
+        $menu_item->panelclass = sanitize_html_classes(get_post_meta($menu_item->ID, '_menu_item_panelclass', true));
+        $menu_item->iconclass = sanitize_html_classes(get_post_meta($menu_item->ID, '_menu_item_iconclass', true));
+        $menu_item->content_from_post = intval(get_post_meta($menu_item->ID, '_menu_item_content_from_post', true));
         $menu_item->remttl = get_post_meta($menu_item->ID, '_menu_item_remttl', true);
         $menu_item->postexcerpt = get_post_meta($menu_item->ID, '_menu_item_postexcerpt', true);
         $menu_item->postfeatimg = get_post_meta($menu_item->ID, '_menu_item_postfeatimg', true);

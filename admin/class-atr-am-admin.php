@@ -94,8 +94,6 @@ class Atr_Advanced_Menu_Admin {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Atr_Advanced_Menu_Loader as all of the hooks are defined
 		 * in that particular class.

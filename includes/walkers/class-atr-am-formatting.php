@@ -11,7 +11,7 @@
  *
  * @author yehuda
  */
-class ATR_mega_menu_formatting  {
+class atr_advanced_menu_formatting  {
 
 	/**
 	 * Take an array of classes, prepend a prefix to each,

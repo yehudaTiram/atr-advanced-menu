@@ -173,7 +173,7 @@ class atr_advanced_menu_walker extends Walker_Nav_Menu {
         // Rename 
         $css_class_prefix = get_option('atr_all_menu_css_class_prefix', 'atr-mm');
         if ($classes)
-            $classes = ATR_mega_menu_formatting::rename_css_classes($css_class_prefix, $classes);
+            $classes = atr_advanced_menu_formatting::rename_css_classes($css_class_prefix, $classes);
         // Expose the classes to filtering.
         apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth);
 

@@ -138,7 +138,7 @@ class Atr_Advanced_Menu_Admin_Settings {
 	 */
 	public function general_options_callback() {
 		$options = get_option('atr_advanced_menu_display_options');
-		var_dump($options);
+		//var_dump($options);
 		echo '<p>' . __( 'You can, among other settings, customize your menu classes and icon font from here.', 'atr-advanced-menu' ) . '</p>';
 	} // end general_options_callback
 
