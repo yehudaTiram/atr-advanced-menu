@@ -87,7 +87,7 @@ class Atr_Advanced_Menu_Public {
         if ((get_option('atr_all_menu_css_file_to_use')) && (get_option('atr_all_menu_css_file_to_use') != $menu_css_file) ) {
             $menu_css_file = get_option('atr_all_menu_css_file_to_use');
             $home_path =  home_url( '/' );
-            wp_register_style($this->_menu_template_token . '-css', $home_path . 'wp-content/uploads/atr-all-menu/' . $menu_css_file . '.css', array(), $this->_version);
+            wp_register_style($this->_menu_template_token . '-css', $home_path . 'wp-content/uploads/atr-advanced-menu/' . $menu_css_file . '.css', array(), $this->_version);
             
         }
         else{

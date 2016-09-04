@@ -34,13 +34,13 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
         /* New fields insertion starts here */
         ?> 
         <div class="fields-wrapper-atr-mm">     
-            <h2 class="field-atr-mm description description-wide"><img class="atr-mm-show-chart" src="<?php echo str_replace('includes/', '', plugin_dir_url(__FILE__)) . 'img/189-tree_1.png' ?>" />&nbsp;<?php _e('ATR All Menu custom fields'); ?></h2>			
+            <h2 class="field-atr-mm description description-wide"><img class="atr-mm-show-chart" src="<?php echo str_replace('includes/', '', plugin_dir_url(__FILE__)) . 'img/189-tree_1.png' ?>" />&nbsp;<?php _e('ATR Advanced Menu custom fields', 'atr-advanced-menu'); ?></h2>			
             <?php
             /* Sub title field insertion starts here */
             ?> 				
             <p class="field-atr-mm description description-wide">
                 <label for="edit-menu-item-subtitle-<?php echo $item_id; ?>">
-                    <?php _e('<strong>Subtitle</strong>'); ?><br />
+                    <?php _e('<strong>Subtitle</strong>', 'atr-advanced-menu'); ?><br />
                     <input type="text" id="edit-menu-item-subtitle-<?php echo $item_id; ?>" class="widefat code edit-menu-item-subtitle" name="menu-item-subtitle[<?php echo $item_id; ?>]" value="<?php echo sanitize_text_field($item->subtitle); ?>" />
                 </label>
             </p>
@@ -49,26 +49,26 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
             ?>
             <p class="field-atr-mm panel-class description-wide">
                 <label for="edit-menu-item-panelclass-<?php echo $item_id; ?>">
-                    <?php _e('<strong>Panel class</strong> - used only in top level items (optional)'); ?><br />
+                    <?php _e('<strong>Panel class</strong> - used only in top level items (optional)', 'atr-advanced-menu'); ?><br />
                     <input type="text" id="edit-menu-item-panelclass-<?php echo $item_id; ?>" class="widefat code edit-menu-item-panelclass" name="menu-item-panelclass[<?php echo $item_id; ?>]" value="<?php echo $this->sanitize_html_classes($item->panelclass); ?>" />
                 </label>
             </p>         
             <?php
             /* Select between post thumbnail and media library image field insertion starts here */
             ?> 	
-            <h3 class="field-atr-mm description description-wide"><?php _e('Select item image'); ?></h3>
+            <h3 class="field-atr-mm description description-wide"><?php _e('Select item image', 'atr-advanced-menu'); ?></h3><br /><hr />
             <p id="menu-item-chooseimage-wrapper-<?php echo $item_id; ?>" class="field-atr-mm chooseimage description-thin">				
-                <input type="radio" value="0" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo (($item->chooseimage == '0') || ($item->chooseimage == '') ? 'checked' : ''); ?> /><?php _e('None'); ?> <br />
-                <input type="radio" value="2" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '2' ? 'checked' : ''); ?> /><?php _e('Use featured image'); ?><br /> 
-                <input type="radio" value="1" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '1' ? 'checked' : ''); ?> /><?php _e('Item image from library'); ?><br /> 
-                <input type="radio" value="3" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '3' ? 'checked' : ''); ?> /><?php _e('Item image from CSS'); ?>  
+                <input type="radio" value="0" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo (($item->chooseimage == '0') || ($item->chooseimage == '') ? 'checked' : ''); ?> /><?php _e('None', 'atr-advanced-menu'); ?> <br />
+                <input type="radio" value="2" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '2' ? 'checked' : ''); ?> /><?php _e('Use featured image', 'atr-advanced-menu'); ?><br /> 
+                <input type="radio" value="1" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '1' ? 'checked' : ''); ?> /><?php _e('Item image from library', 'atr-advanced-menu'); ?><br /> 
+                <input type="radio" value="3" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '3' ? 'checked' : ''); ?> /><?php _e('Item image from CSS', 'atr-advanced-menu'); ?>  
             </p>					
             <?php
             /* Featured image slection field insertion starts here */
             ?> 	
             <div class="field-atr-mm featuredimage description-thin">
                 <label for="menu-item-featuredimage-<?php echo $item_id; ?>">	
-                    <?php _e('Use the post featured image for this menu item'); ?><br />	
+                    <?php _e('Use the post featured image for this menu item', 'atr-advanced-menu'); ?><br />	
                     <?php
                     // featured image display
                     $image_attributes = '';
@@ -103,7 +103,8 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
                     if ($image_attributes != '') {
                         echo $image_attributes;
                     } else {
-                        $image_attributes = '<p class="atr-inline-warning featuredimage-error"><span class="dashicons dashicons-warning"></span>No featured image set. Please set it in post edit page!<p>';
+                        //$image_attributes = '<p class="atr-inline-warning featuredimage-error"><span class="dashicons dashicons-warning"></span>No featured image set. Please set it in post edit page!<p>';
+						$image_attributes = _e('<p class="atr-inline-warning featuredimage-error"><span class="dashicons dashicons-warning"></span>No featured image set. Please set it in post edit page!</p>', 'atr-advanced-menu');
                         echo $image_attributes;  //
                     }
                     ?>
@@ -118,7 +119,7 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
                     <img src="<?php echo esc_url($item->customimage); ?>" id="menu-item-customimage-<?php echo $item_id; ?>" class="atr-mm-wc-cat-img menu-item-customimage" />
                     <input id="customimage-url-<?php echo $item_id; ?>" type="text" name="menu-item-customimage[<?php echo $item_id; ?>]" value="<?php echo esc_url($item->customimage); ?>" class="edit-menu-item-customimage" />
                     <form method="post" class="form-atr-mm">					  
-                        <input id="upload-button-<?php echo $item_id; ?>" type="button" class="button" value="Upload/Select Image" />  					 
+                        <input id="upload-button-<?php echo $item_id; ?>" type="button" class="button" value="<?php _e('Upload/Select Image', 'atr-advanced-menu') ?>" />  					 
                     </form>	
                 </label>
             </div>	
@@ -129,38 +130,39 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
                 <label for="edit-menu-item-iconclass-<?php echo $item_id; ?>">
                     <?php //CSS Icon class  ?>
 
-                    <?php _e('<strong>Icon class</strong> - Write the class for backgground icon.'); ?><br />
+                    <?php _e('<strong>Icon class</strong> - Write the class for backgground icon.', 'atr-advanced-menu'); ?><br />
                     <input type="text" id="edit-menu-item-iconclass-<?php echo $item_id; ?>" class="widefat code edit-menu-item-iconclass" name="menu-item-iconclass[<?php echo $item_id; ?>]" value="<?php echo $this->sanitize_html_classes($item->iconclass); ?>" /><br />
 
-                    <a id="iconclass-preview-button-<?php echo $item_id; ?>" class="button" href="#"><i class="<?php echo $this->sanitize_html_classes($item->iconclass); ?>"></i> Preview</a>
+                    <a id="iconclass-preview-button-<?php echo $item_id; ?>" class="button" href="#"><i class="<?php echo $this->sanitize_html_classes($item->iconclass); ?>"></i> <?php _e('Preview', 'atr-advanced-menu') ?></a>
                 </label>
             </div>   
             <?php
             /* Add content from post # field insertion starts here */
             ?>
-            <div class="atr-content-from-post-wrpper"><hr />
+            <div class="atr-content-from-post-wrpper">
+				<h3 class="field-atr-mm description description-wide atr-content-from-post-ttl"><?php _e('Content from post', 'atr-advanced-menu'); ?></h3><br /><hr />				
                 <p class="field-atr-mm remove-title description-wide">
                     <label for="edit-menu-item-remttl-<?php echo $item_id; ?>">
                         <input type="checkbox" id="edit-menu-item-remttl-<?php echo $item_id; ?>" class="widefat code edit-menu-item-remttl" value="remove-title" name="menu-item-remttl[<?php echo $item_id; ?>]"<?php checked($item->remttl, 'remove-title'); ?> />
-                        <?php _e('Remove title (and link) from this menu item.'); ?>
+                        <?php _e('Remove title (and link) from this menu item.', 'atr-advanced-menu'); ?>
                     </label>
                 </p>               
                 <div class="field-atr-mm content-from-post description-thin">
                     <label for="menu-item-content-from-post-<?php echo $item_id; ?>">
-                        <?php _e('<strong>Content from post</strong> - Write the the post id to insert its content into this item.'); ?><br />
+                        <?php _e('<strong>Content from post</strong> - Write the the post id to insert its content into this item.', 'atr-advanced-menu'); ?><br />
                         <input type="text" id="edit-menu-item-content-from-post-<?php echo $item_id; ?>" class="widefat code edit-menu-item-content-from-post" name="menu-item-content-from-post[<?php echo $item_id; ?>]" value="<?php echo (!empty($item->content_from_post)) ? intval($item->content_from_post) : ''; ?>" />                    
                     </label>
                 </div>  
                 <div class="field-atr-mm atr-mm-postexcerpt description-thin">
                     <label for="edit-menu-item-postexcerpt-<?php echo $item_id; ?>">
-                        <input type="checkbox" id="edit-menu-item-postexcerpt-<?php echo $item_id; ?>" class="widefat code edit-menu-item-postexcerpt" value="atr-mm-postexcerpt" name="menu-item-postexcerpt[<?php echo $item_id; ?>]"<?php checked($item->postexcerpt, 'atr-mm-postexcerpt'); ?> />
-                        <?php _e('Use this post excerpt with link to target post.'); ?>
+                        <input type="checkbox" id="edit-menu-item-postexcerpt-<?php echo $item_id; ?>" class="widefat code edit-menu-item-postexcerpt" value="atr-mm-postexcerpt" name="menu-item-postexcerpt[<?php echo $item_id; ?>]"<?php checked($item->postexcerpt, 'use-excerpt'); ?> />
+                        <?php _e('Use this post excerpt with link to target post.', 'atr-advanced-menu'); ?>
                     </label>
                 </div> 	                
                 <div class="field-atr-mm atr-mm-postfeatimg description-thin">
                     <label for="edit-menu-item-postfeatimg-<?php echo $item_id; ?>">
-                        <input type="checkbox" id="edit-menu-item-postfeatimg-<?php echo $item_id; ?>" class="widefat code edit-menu-item-postfeatimg" value="atr-mm-postfeatimg" name="menu-item-postfeatimg[<?php echo $item_id; ?>]"<?php checked($item->postfeatimg, 'atr-mm-postfeatimg'); ?> />
-                        <?php _e('Display this post featured image.'); ?>
+                        <input type="checkbox" id="edit-menu-item-postfeatimg-<?php echo $item_id; ?>" class="widefat code edit-menu-item-postfeatimg" value="atr-mm-postfeatimg" name="menu-item-postfeatimg[<?php echo $item_id; ?>]"<?php checked($item->postfeatimg, 'use-post-feat'); ?> />
+                        <?php _e('Display this post featured image.', 'atr-advanced-menu'); ?>
                     </label>
                 </div>                 
             </div>
