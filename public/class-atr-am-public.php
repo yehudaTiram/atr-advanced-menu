@@ -81,7 +81,7 @@ class Atr_Advanced_Menu_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/atr-advanced-menu-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/atr-am-public.css', array(), $this->version, 'all' );
 
         $menu_css_file = 'megamenu';
         if ((get_option('atr_all_menu_css_file_to_use')) && (get_option('atr_all_menu_css_file_to_use') != $menu_css_file) ) {
@@ -126,7 +126,7 @@ class Atr_Advanced_Menu_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/atr-advanced-menu-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/atr-am-public.js', array( 'jquery' ), $this->version, false );
 		
 		
         $do_not_load_js = get_option('atr_all_menu_do_not_load_js');

@@ -180,7 +180,8 @@ class Atr_Advanced_Menu {
         $this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
         $this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_display_options' );	
         // add media browsing ability to menu fields to menu
-        $this->loader->add_action('admin_init', $plugin_edit_menu_fields, 'atr_am_load_wp_media_files');
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_edit_menu_fields, 'atr_am_load_wp_media_files');
+
 
         // add custom menu fields to menu
         $this->loader->add_filter('wp_setup_nav_menu_item', $plugin_edit_menu_fields, 'atr_am_add_custom_nav_fields');

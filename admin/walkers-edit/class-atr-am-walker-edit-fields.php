@@ -13,7 +13,13 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
 	
         // Load API for media loader
         function atr_am_load_wp_media_files() {
-            wp_enqueue_media();
+			// Check if wp_enqueue_media is already loaded. (Otherwise, media will not worl on posts/pages edit)
+			if ( did_action( 'wp_enqueue_media' ) ) {
+				return;
+			}
+			else {
+				wp_enqueue_media();
+			}
         }	
 		//$this->loader->add_action('load_wp_media_files', $plugin_edit_menu_fields, 'atr_am_load_wp_media_files', 11, 4);
 		//add_action('load_wp_media_files', array($this->atr_am_load_wp_media_files()) 'atr_am_load_wp_media_files', 11, 4);
@@ -52,7 +58,7 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
             ?> 	
             <h3 class="field-atr-mm description description-wide"><?php _e('Select item image'); ?></h3>
             <p id="menu-item-chooseimage-wrapper-<?php echo $item_id; ?>" class="field-atr-mm chooseimage description-thin">				
-                <input type="radio" value="0" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '0' ? 'checked' : ''); ?> /><?php _e('None'); ?> <br />
+                <input type="radio" value="0" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo (($item->chooseimage == '0') || ($item->chooseimage == '') ? 'checked' : ''); ?> /><?php _e('None'); ?> <br />
                 <input type="radio" value="2" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '2' ? 'checked' : ''); ?> /><?php _e('Use featured image'); ?><br /> 
                 <input type="radio" value="1" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '1' ? 'checked' : ''); ?> /><?php _e('Item image from library'); ?><br /> 
                 <input type="radio" value="3" name="menu-item-chooseimage<?php echo $item_id; ?>[]"<?php echo ($item->chooseimage == '3' ? 'checked' : ''); ?> /><?php _e('Item image from CSS'); ?>  
@@ -69,7 +75,7 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
                     switch ($item->type) {
                         case 'post_type':
                             if (has_post_thumbnail($item->object_id)) {
-                                $image_attributes = get_the_post_thumbnail($item->object_id);
+                                $image_attributes = get_the_post_thumbnail($item->object_id, 'thumbnail');
                             } else
                                 $image_attributes = '';
                             break;
@@ -84,7 +90,7 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
                                 }
                             } else {
                                 if (has_post_thumbnail($item->object_id)) {
-                                    $image_attributes = get_the_post_thumbnail($item->object_id);
+                                    $image_attributes = get_the_post_thumbnail($item->object_id, 'thumbnail');
                                 } else
                                     $image_attributes = '';
                             }
