@@ -74,32 +74,15 @@ class Atr_Advanced_Menu_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/atr-am-admin.css', array(), $this->version, 'all' );
-		//wp_enqueue_style( 'load_icon_font', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' );
-		
-        //$icon_font_file = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
-		
-		
-		
+		wp_enqueue_style( 'atr-am-admin.css', plugin_dir_url( __FILE__ ) . 'css/atr-am-admin.css', array(), $this->version, 'all' );
+
 		$atr_am_options = get_option( 'atr_advanced_menu_display_options' );
 		 if ( ! ( $atr_am_options  === FALSE )) {
-			if ( !($atr_am_options[ 'icon_font_from_elsewhere' ] )){
-				$icon_font_file = $atr_am_options[ 'load_icon_font' ];
+			if ( ($atr_am_options[ 'load_icon_font' ]  )){
+				$icon_font_file = esc_url($atr_am_options[ 'load_icon_font' ]);
 				wp_enqueue_style( 'load_icon_font', $icon_font_file );				
-			}
-			 
-		 }
-// $icon_font_from_elsewhere = $atr_am_options[ 'atr_all_menu_icon_font_from_elsewhere' ];
-// $load_icon_font = $atr_am_options[ 'load_icon_font' ];
-
-
-		
-		 // if ( ! get_option('atr_all_menu_icon_font_from_elsewhere')) {
-			// if (get_option('atr_advanced_menu_display_options')) {
-				// $icon_font_file = get_option('atr_advanced_menu_display_options');
-				// wp_enqueue_style( 'load_icon_font', $icon_font_file['load_icon_font'] );
-			// }			 
-		 // }		
+			}			 			 
+		 }	
 
 	}
 

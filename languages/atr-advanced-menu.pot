@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATR advanced menu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/ATR advanced menu\n"
-"POT-Creation-Date: 2016-09-04 15:44+0300\n"
+"POT-Creation-Date: 2016-09-04 20:11+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +59,7 @@ msgid "Use the post featured image for this menu item"
 msgstr ""
 
 #: admin\walkers-edit\class-atr-am-walker-edit-fields.php:132
-msgid "<strong>Icon class</strong> - Write the class for backgground icon."
+msgid "<strong>Icon class</strong> - Write the class for font icon."
 msgstr ""
 
 #: admin\walkers-edit\class-atr-am-walker-edit-fields.php:142
@@ -97,7 +97,6 @@ msgstr ""
 msgid "Write the css file name (without extension)"
 msgstr ""
 
-
 msgid "Load icon font"
 msgstr ""
 
@@ -126,4 +125,7 @@ msgid "Work in style edit mode"
 msgstr ""
 
 msgid "Check this if you want the drop down panel to stay open after the mouse out.<br />Good for editing the CSS of the menu."
+msgstr ""
+
+msgid "<span class=\"atr-inline-warning\"><strong>Note: You cannot use font icon. Please define the font icons file in the plugin settings -> \"Load icon font\"! </strong></span>"
 msgstr ""

@@ -129,8 +129,14 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
             <div class="field-atr-mm icon-class description-thin">            
                 <label for="edit-menu-item-iconclass-<?php echo $item_id; ?>">
                     <?php //CSS Icon class  ?>
-
-                    <?php _e('<strong>Icon class</strong> - Write the class for backgground icon.', 'atr-advanced-menu'); ?><br />
+                    <?php 
+						_e('<strong>Icon class</strong> - Write the class for font icon.', 'atr-advanced-menu'); 
+						$atr_am_options = get_option( 'atr_advanced_menu_display_options' );
+						 if ( ! ($atr_am_options[ 'load_icon_font' ]  )) {
+							_e('<span class="atr-inline-warning"><strong>Note: You cannot use font icon. Please define the font icons file in the plugin settings -> "Load icon font"! </strong></span>', 'atr-advanced-menu'); 
+						 }						
+					
+					?><br />
                     <input type="text" id="edit-menu-item-iconclass-<?php echo $item_id; ?>" class="widefat code edit-menu-item-iconclass" name="menu-item-iconclass[<?php echo $item_id; ?>]" value="<?php echo $this->sanitize_html_classes($item->iconclass); ?>" /><br />
 
                     <a id="iconclass-preview-button-<?php echo $item_id; ?>" class="button" href="#"><i class="<?php echo $this->sanitize_html_classes($item->iconclass); ?>"></i> <?php _e('Preview', 'atr-advanced-menu') ?></a>
