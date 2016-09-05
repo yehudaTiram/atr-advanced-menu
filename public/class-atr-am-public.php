@@ -88,7 +88,10 @@ class Atr_Advanced_Menu_Public {
 		 if ( ( ! ( $atr_am_options  === FALSE )) && ($atr_am_options[ 'css_file_to_use' ])) {
 			wp_register_style('custom_menu_css_file', esc_url($atr_am_options[ 'css_file_to_use' ]), array(), $this->_version);
 			wp_enqueue_style('custom_menu_css_file');			 
-		 }		
+		 }
+		elseif ( ( ! ( $atr_am_options  === FALSE )) && ($atr_am_options[ 'do_not_load_css' ])){
+			// Do not load the css file at all
+		}
         else{
             wp_register_style('menu_css_file', plugin_dir_url( __FILE__ ) . 'menu-templates/' . $menu_css_file , array(), $this->_version);
 			wp_enqueue_style('menu_css_file');

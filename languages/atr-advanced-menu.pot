@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATR advanced menu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/ATR advanced menu\n"
-"POT-Creation-Date: 2016-09-04 20:11+0300\n"
+"POT-Creation-Date: 2016-09-05 21:43+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -91,16 +91,28 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-msgid "You can, among other settings, customize your menu classes and icon font from here."
+msgid "<span class=\"atr-inline-warning\"><strong>Note: You cannot use font icon. Please define the font icons file in the plugin settings -> \"Load icon font\"! </strong></span>"
 msgstr ""
 
-msgid "Write the css file name (without extension)"
+msgid "You can, among other things, customize your menu classes and icon font from here."
 msgstr ""
 
-msgid "Load icon font"
+msgid "Alternate CSS file url"
 msgstr ""
 
-msgid "The path to the icon font css.<br />If you want to use icon font for icons in the menu (like Font Awesome and others), you can load it here. You can experiment or use https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css.<br /><span class=\"atr-inline-warning\"><strong>Note:</span> </strong>If you load the icon font in the theme (or anywhere else), make sure to check the next option in order to load this plugin's font only in edit mode and use it only for the backend preview (Your theme will load it for the front end)."
+msgid "<br /><span class=\"atr-inline-optional\"><strong>Optional</strong></span> - Leave empty in order to use the plugin’s default \"megamenu.css\" file (stored in /wp-content/plugins/atr-advanced-menu/public/menu-templates/megamenu.css).<br />Or, if you want to use your own CSS file for the menu:<br />1. Create a css file with the styles you want.<br />2. Write here in the textbox the new file URL.<br /><span class=\"atr-inline-red\"><strong>3. Important:</strong></span> Your CSS file must include some basic classes for the menu to work properly. See in the plugin’s \"megamenu.css\" file what is mandatory for the menu to work."
+msgstr ""
+
+msgid "Do not load any CSS file"
+msgstr ""
+
+msgid "<br /><span class=\"atr-inline-optional\"><strong>Optional</strong></span> - Check this if you included all the css classes needed for the menu in some other file like style.css which is loaded elsewhere.<br />This CSS file <span class=\"atr-inline-red\"><strong>must</strong></span> include some basic classes for the menu to work properly. See in the plugin’s \"megamenu.css\" file what is mandatory for the menu to work."
+msgstr ""
+
+msgid "Icon font URL"
+msgstr ""
+
+msgid "<span class=\"atr-inline-optional\"><strong>Optional</strong></span> - The path to the icon font css.<br />If you want to use icon font for icons in the menu (like Font Awesome and others), you can load it here. You can experiment or use https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css.<br /><span class=\"atr-inline-red\"><strong>Note:</span> </strong>If you load the icon font in the theme (or anywhere else), make sure to check the next option in order to load this plugin's font only in edit mode and use it only for the backend preview (Your theme will load it for the front end)."
 msgstr ""
 
 msgid "I load icon fonts for front end elsewhere"
@@ -109,23 +121,20 @@ msgstr ""
 msgid "Check this if you load icon fonts elsewhere (like from theme). The font will be loaded only for the backend preview."
 msgstr ""
 
-msgid "Mega menu panel default css class"
+msgid "Menu panel default css class"
 msgstr ""
 
-msgid "Write the default class for the Mega Menu panels.<br />This class will be added to the drop down panel element.<br />i.e. if you wrote here a class name \"cols-4\" and in menu editor in the top item's (products page in this case) \"Panel class\" field write class name \"products-panel\", the final class set of the panel will be \"cols-4 products-panel accessible-megamenu-panel\" (accessible-megamenu-panel class is mandatory).<br />This option gives you the ability to control the style of all panels while the \"Panel class\" field in the menu editor gives you control of single panel.<br /><span class=\"atr-inline-warning\"><strong>Note:</strong> The default class is \"cols-4\". If you change the default class, you will have to adjust the css of the menu accordingly.</span>"
+msgid "Write the default class for the Mega Menu panels.<br />This class will be added to all the drop down panel elements.<br />i.e. if you write here a class named \"cols-4\" and in the menu editor in the top item's \"Panel class\" field write class name \"products-panel\", the final class set of the panel will be \"cols-4 products-panel accessible-megamenu-panel\" (accessible-megamenu-panel class is mandatory).<br />This option gives you the ability to control the style of all panels while the \"Panel class\" field in the menu editor gives you control of single panel."
 msgstr ""
 
-msgid "The menu items css class prefix"
+msgid "Menu items css class prefix"
 msgstr ""
 
-msgid "Write the css class prefix for the menu items.<br />The prefix is needed to single out your classes from optional conflicts. If you will not write a css class prefix here, the default Wordpress menu classes will be used.<br /><span class=\"atr-inline-warning\"><strong>Note: </strong>The default css class prefix is \"atr-mm\". If you change the default class, you will have to adjust the css of the menu accordingly.</span>"
+msgid "Write the css class prefix for the menu items.<br />The prefix is needed to single out your classes from optional conflicts. If you will not write a css class prefix here, the default theme menu classes (if exist) might be used."
 msgstr ""
 
-msgid "Work in style edit mode"
+msgid "Display in style edit mode"
 msgstr ""
 
-msgid "Check this if you want the drop down panel to stay open after the mouse out.<br />Good for editing the CSS of the menu."
-msgstr ""
-
-msgid "<span class=\"atr-inline-warning\"><strong>Note: You cannot use font icon. Please define the font icons file in the plugin settings -> \"Load icon font\"! </strong></span>"
+msgid "<span class=\"atr-inline-red\"><strong>For development only:</strong></span> Check this if you want the drop down panel of the menu to stay open after the mouse is out of the top level items.<br />Good for editing the CSS of the menu."
 msgstr ""

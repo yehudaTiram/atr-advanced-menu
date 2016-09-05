@@ -99,12 +99,6 @@ limitations under the License.
 /* Classes for the panel wrapper */
 /* Use in "Panel class - used only in top level items (optional)" text box of the panel parent item. */
 
-/* Clearfix */
-/*.atr-group:after {
-  content: "";
-  display: table;
-  clear: both;
-}*/
 .panel-50x22em {
 	/*height: 22em;*/
 	width: 55em;
@@ -131,15 +125,15 @@ limitations under the License.
 
 /* Classes for layout of the panel inner items */
 /* Use in WP menu editor "CSS Classes (optional)" text box of the panel inner items. */
-.atr-mm-onethird {
+.atr-am-onethird {
 	width: 32%;
 }
 
-.atr-mm-twothirds {
+.atr-am-twothirds {
 	width: 65%;
 }
 
-.atr-mm-half {
+.atr-am-half {
 	width: 50%;
 }
 
@@ -148,7 +142,7 @@ limitations under the License.
 	width: 200px;
 }
 
-.panel-23x44em.accessible-megamenu-panel > ul > li.atr-mm-monkey {
+.panel-23x44em.accessible-megamenu-panel > ul > li.atr-am-monkey {
 	border: medium none;
 	width: 356px;
 }
@@ -211,7 +205,7 @@ ul.accessible-megamenu > li > a img, ul.accessible-megamenu > li > a b {
 	border-left: 1px solid #444;
 }
 
-	.accessible-megamenu .accessible-megamenu-panel .atr-mm-menu-thumb > img {
+	.accessible-megamenu .accessible-megamenu-panel .atr-am-menu-thumb > img {
 		border: 1px solid #ccc;
 		float: left;
 		margin: 0 12px;

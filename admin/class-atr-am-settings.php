@@ -139,7 +139,7 @@ class Atr_Advanced_Menu_Admin_Settings {
 	public function general_options_callback() {
 		$options = get_option('atr_advanced_menu_display_options');
 		//var_dump($options);
-		echo '<p>' . __( 'You can, among other settings, customize your menu classes and icon font from here.', 'atr-advanced-menu' ) . '</p>';
+		echo '<p>' . __( 'You can, among other things, customize your menu classes and icon font from here.', 'atr-advanced-menu' ) . '</p>';
 	} // end general_options_callback
 
 
@@ -167,23 +167,34 @@ class Atr_Advanced_Menu_Admin_Settings {
 		
 		add_settings_field(
 			'css_file_to_use',
-			__( 'Write the css file name (without extension)', 'atr-advanced-menu' ),
+			__( 'Alternate CSS file url', 'atr-advanced-menu' ),
 			array( $this, 'css_file_to_use_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( '<p><br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Leave empty in order to use the plugin’s default "megamenu.css" file (stored in \wp-content\plugins\atr-all-menu\assets\menu-templates\megamenu.css).<br />Or, if you want to use your own CSS file for the menu:<br />1. Create a new directory named "atr-all-menu" (if not already exist) in "/wp-content/uploads/" directory of your Wordpress file system and upload your CSS file into it<br />2. Write here in the textbox the new file name without the extension. (i.e. If you uploaded a file called "my-menu.css", write here "my-menu ")<br />3. <span class="atr-inline-optional"><strong>Important:</strong></span> Your CSS file must include some basic classes for the menu to work properly. Read in the plugin’s documentation files about it. You can also find them in the file "megamenu-basic.css" included in the plugin documentation directory.</li></ol>', 'atr-advanced-menu' ),
+				__( '<br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Leave empty in order to use the plugin’s default "megamenu.css" file (stored in /wp-content/plugins/atr-advanced-menu/public/menu-templates/megamenu.css).<br />Or, if you want to use your own CSS file for the menu:<br />1. Create a css file with the styles you want.<br />2. Write here in the textbox the new file URL.<br /><span class="atr-inline-red"><strong>3. Important:</strong></span> Your CSS file must include some basic classes for the menu to work properly. See in the plugin’s "megamenu.css" file what is mandatory for the menu to work.', 'atr-advanced-menu' ),
+			)
+		); 
+		
+		add_settings_field(
+			'do_not_load_css',
+			__( 'Do not load any CSS file', 'atr-advanced-menu' ),
+			array( $this, 'do_not_load_css_callback'),
+			'atr_advanced_menu_display_options',
+			'general_settings_section',			        // The name of the section to which this field belongs
+			array(								        // The array of arguments to pass to the callback. In this case, just a description.
+				__( '<br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Check this if you included all the css classes needed for the menu in some other file like style.css which is loaded elsewhere.<br />This CSS file <span class="atr-inline-red"><strong>must</strong></span> include some basic classes for the menu to work properly. See in the plugin’s "megamenu.css" file what is mandatory for the menu to work.', 'atr-advanced-menu' ),
 			)
 		); 
 		
 		add_settings_field(
 			'load_icon_font',
-			__( 'Load icon font', 'atr-advanced-menu' ),
+			__( 'Icon font URL', 'atr-advanced-menu' ),
 			array( $this, 'load_icon_font_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( 'The path to the icon font css.<br />If you want to use icon font for icons in the menu (like Font Awesome and others), you can load it here. You can experiment or use https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css.<br /><span class="atr-inline-warning"><strong>Note:</span> </strong>If you load the icon font in the theme (or anywhere else), make sure to check the next option in order to load this plugin\'s font only in edit mode and use it only for the backend preview (Your theme will load it for the front end).', 'atr-advanced-menu' ),
+				__( '<span class="atr-inline-optional"><strong>Optional</strong></span> - The path to the icon font css.<br />If you want to use icon font for icons in the menu (like Font Awesome and others), you can load it here. You can experiment or use https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css.<br /><span class="atr-inline-red"><strong>Note:</span> </strong>If you load the icon font in the theme (or anywhere else), make sure to check the next option in order to load this plugin\'s font only in edit mode and use it only for the backend preview (Your theme will load it for the front end).', 'atr-advanced-menu' ),
 			)
 		); 		
 
@@ -200,34 +211,34 @@ class Atr_Advanced_Menu_Admin_Settings {
 
 		add_settings_field(
 			'panel_default_class',
-			__( 'Mega menu panel default css class', 'atr-advanced-menu' ),
+			__( 'Menu panel default css class', 'atr-advanced-menu' ),
 			array( $this, 'panel_default_class_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( 'Write the default class for the Mega Menu panels.<br />This class will be added to the drop down panel element.<br />i.e. if you wrote here a class name "cols-4" and in menu editor in the top item\'s (products page in this case) "Panel class" field write class name "products-panel", the final class set of the panel will be "cols-4 products-panel accessible-megamenu-panel" (accessible-megamenu-panel class is mandatory).<br />This option gives you the ability to control the style of all panels while the "Panel class" field in the menu editor gives you control of single panel.<br /><span class="atr-inline-warning"><strong>Note:</strong> The default class is "cols-4". If you change the default class, you will have to adjust the css of the menu accordingly.</span>', 'atr-advanced-menu' ),
+				__( 'Write the default class for the Mega Menu panels.<br />This class will be added to all the drop down panel elements.<br />i.e. if you write here a class named "cols-4" and in the menu editor in the top item\'s "Panel class" field write class name "products-panel", the final class set of the panel will be "cols-4 products-panel accessible-megamenu-panel" (accessible-megamenu-panel class is mandatory).<br />This option gives you the ability to control the style of all panels while the "Panel class" field in the menu editor gives you control of single panel.', 'atr-advanced-menu' ),
 			)
 		); 		
 		
 		add_settings_field(
 			'css_class_prefix',
-			__( 'The menu items css class prefix', 'atr-advanced-menu' ),
+			__( 'Menu items css class prefix', 'atr-advanced-menu' ),
 			array( $this, 'css_class_prefix_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( 'Write the css class prefix for the menu items.<br />The prefix is needed to single out your classes from optional conflicts. If you will not write a css class prefix here, the default Wordpress menu classes will be used.<br /><span class="atr-inline-warning"><strong>Note: </strong>The default css class prefix is "atr-mm". If you change the default class, you will have to adjust the css of the menu accordingly.</span>', 'atr-advanced-menu' ),
+				__( 'Write the css class prefix for the menu items.<br />The prefix is needed to single out your classes from optional conflicts. If you will not write a css class prefix here, the default theme menu classes (if exist) might be used.', 'atr-advanced-menu' ),
 			)
 		); 		
 		
 		add_settings_field(
 			'style_edit_mode',
-			__( 'Work in style edit mode', 'atr-advanced-menu' ),
+			__( 'Display in style edit mode', 'atr-advanced-menu' ),
 			array( $this, 'style_edit_mode_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( 'Check this if you want the drop down panel to stay open after the mouse out.<br />Good for editing the CSS of the menu.', 'atr-advanced-menu' ),
+				__( '<span class="atr-inline-red"><strong>For development only:</strong></span> Check this if you want the drop down panel of the menu to stay open after the mouse is out of the top level items.<br />Good for editing the CSS of the menu.', 'atr-advanced-menu' ),
 			)
 		); 			
 		
@@ -304,6 +315,26 @@ class Atr_Advanced_Menu_Admin_Settings {
 		echo '<input type="text" id="css_file_to_use" name="atr_advanced_menu_display_options[css_file_to_use]" value="' . $options['css_file_to_use'] . '" />' . '<label for="show_header">&nbsp;'  . $args[0] . '</label>';
 
 	} // end css_file_to_use_callback
+	
+	/**
+	 * This function renders the do_not_load_css checkbox.
+	 *
+	 * It accepts an array or arguments and expects the first element in the array to be the description
+	 * to be displayed next to the checkbox.
+	 */
+	public function do_not_load_css_callback($args) {
+
+		// First, we read the options collection
+		$options = get_option('atr_advanced_menu_display_options');
+
+		$html = '<input type="checkbox" id="do_not_load_css" name="atr_advanced_menu_display_options[do_not_load_css]" value="1" ' . checked( 1, isset( $options['do_not_load_css'] ) ? $options['do_not_load_css'] : 0, false ) . '/>';
+
+		// Here, we'll take the first argument of the array and add it to a label next to the checkbox
+		$html .= '<label for="do_not_load_css">&nbsp;'  . $args[0] . '</label>';
+
+		echo $html;
+
+	} // end do_not_load_css_callback	
 	
 	/**
 	 * This renders the text field for load_icon_font.
