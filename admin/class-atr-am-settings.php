@@ -80,9 +80,9 @@ class Atr_Advanced_Menu_Admin_Settings {
 	public function default_display_options() {
 
 		$defaults = array(
-			'show_header'		=>	'',
-			'show_content'		=>	'',
-			'show_footer'		=>	'',
+			'panel_default_class'		=>	'atr-am',
+			'css_class_prefix'		=>	'atr-am',
+			'load_icon_font'		=>	'',
 		);
 
 		return $defaults;

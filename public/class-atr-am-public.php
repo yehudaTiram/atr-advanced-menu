@@ -135,6 +135,9 @@ class Atr_Advanced_Menu_Public {
 			else {
 				$menu_js_file = 'jquery-accessibleMegaMenuStyleEdit';
 			}
+		 }
+		 else {
+			 $menu_js_file = 'jquery-accessibleMegaMenu';
 		 }		
 		 
 		 /*

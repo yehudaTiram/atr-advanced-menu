@@ -39,18 +39,31 @@ class atr_advanced_menu_walker extends Walker_Nav_Menu {
         $indent = str_repeat("\t", $depth);
         //$panel_class = $item->panelclass;
         // Select a CSS class for this `<ul>` based on $depth
-        $do_not_use_wrapper = get_option('atr_all_menu_do_not_use_wrapper');
-        //TODO Check this conditon again. I removed the option from settings  
-        if (!$do_not_use_wrapper == 'on') {
-            // Set the Mega Menu panel class (only level 0) 
-            $the_panel_class = self::$parent_panel_class; // This child element is wrapped with a div + class = $the_panel_class
-            $default_panel_class = get_option('atr_all_menu_panel_default_class', 'accessible-megamenu-panel');
-            if ($depth === 0) {
-                $output .= "<div class=\"$default_panel_class $the_panel_class \">\n";
-            } else {
-                //$output .= "<div class=\"$the_panel_class\">\n";
-            }
-        }
+        // $do_not_use_wrapper = get_option('atr_all_menu_do_not_use_wrapper');
+        // ************** TODO Check this conditon again. I removed the option from settings ***************
+        // if (!$do_not_use_wrapper == 'on') {
+
+        // }
+		// Set the Mega Menu panel class (only level 0) 
+		$the_panel_class = self::$parent_panel_class; // This child element is wrapped with a div + class = $the_panel_class
+		
+		
+		$atr_am_options = get_option( 'atr_advanced_menu_display_options' );
+		if ( ! ( $atr_am_options  === FALSE )){
+			$default_panel_class = $atr_am_options['panel_default_class'];
+		}
+		else {
+			$default_panel_class = 'accessible-megamenu-panel';
+		}
+		
+		
+		
+		//$default_panel_class = get_option('atr_all_menu_panel_default_class', 'accessible-megamenu-panel');
+		if ($depth === 0) {
+			$output .= "<div class=\"$default_panel_class $the_panel_class \">\n";
+		} else {
+			//$output .= "<div class=\"$the_panel_class\">\n";
+		}		
         $class = 'sub-list-' . $depth . ' ';
         //$output .= "<ul class=$class>\n";
 		if ($depth === 0) {
@@ -171,14 +184,23 @@ class atr_advanced_menu_walker extends Walker_Nav_Menu {
         $classes = $item->classes;
 		//var_dump( $classes[1] );
         // Rename 
-        $css_class_prefix = get_option('atr_all_menu_css_class_prefix', 'atr-mm');
-        if ($classes)
+        $css_class_prefix = '';
+		$atr_am_options = get_option( 'atr_advanced_menu_display_options' );
+		if ( ! ( $atr_am_options  === FALSE )){
+			$css_class_prefix = $atr_am_options['css_class_prefix'];
+		}
+		else {
+			$css_class_prefix = 'accessible-megamenu-panel';
+		}		
+        if ($classes){
             $classes = atr_advanced_menu_formatting::rename_css_classes($css_class_prefix, $classes);
-        // Expose the classes to filtering.
-        apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth);
+			// Expose the classes to filtering.
+			apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth);
 
-        // Convert the classes into a string for output.
-        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+			// Convert the classes into a string for output.
+			$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));			
+		}
+
 
         // ***************************
         // **** print the items ******
