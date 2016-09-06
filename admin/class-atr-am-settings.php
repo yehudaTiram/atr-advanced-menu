@@ -83,6 +83,7 @@ class Atr_Advanced_Menu_Admin_Settings {
 			'panel_default_class'		=>	'atr-am',
 			'css_class_prefix'		=>	'atr-am',
 			'load_icon_font'		=>	'',
+			'css_file_to_use'		=>  '',
 		);
 
 		return $defaults;
@@ -178,12 +179,12 @@ class Atr_Advanced_Menu_Admin_Settings {
 		
 		add_settings_field(
 			'do_not_load_css',
-			__( 'Do not load any CSS file', 'atr-advanced-menu' ),
+			__( 'Do not load any CSS file<br /><span class="atr-inline-red"><strong>Please make sure "Alternate CSS file url" above is empty.</strong></span>', 'atr-advanced-menu' ),
 			array( $this, 'do_not_load_css_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( '<br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Check this if you included all the css classes needed for the menu in some other file like style.css which is loaded elsewhere.<br />This CSS file <span class="atr-inline-red"><strong>must</strong></span> include some basic classes for the menu to work properly. See in the plugin’s "megamenu.css" file what is mandatory for the menu to work.', 'atr-advanced-menu' ),
+				__( '<br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Check this if you included all the css classes needed for the menu in some other file like style.css which is loaded elsewhere.<br />This CSS file <span class="atr-inline-red"><strong>must</strong></span> include some basic classes for the menu to work properly. See in the plugin’s "megamenu.css" file what is mandatory for the menu to work.<br /><span class="atr-inline-red"><strong>Please make sure "Alternate CSS file url" above is empty.</strong></span>', 'atr-advanced-menu' ),
 			)
 		); 
 		
@@ -248,7 +249,8 @@ class Atr_Advanced_Menu_Admin_Settings {
 		// Finally, we register the fields with WordPress
 		register_setting(
 			'atr_advanced_menu_display_options',
-			'atr_advanced_menu_display_options'
+			'atr_advanced_menu_display_options',
+            array( $this, 'sanitize' ) // Sanitize
 		);
 
 	} // end initialize_display_options
@@ -302,7 +304,7 @@ class Atr_Advanced_Menu_Admin_Settings {
 	
 	
 	/**
-	 * This renders the text field for css_file_to_use.
+	 * This renders the text field for css_file_to_usecss_file_to_use.
 	 *
 	 * It accepts an array or arguments and expects the first element in the array to be the description
 	 * to be displayed next to the checkbox.
@@ -383,7 +385,48 @@ class Atr_Advanced_Menu_Admin_Settings {
 	} // end css_class_prefix_callback
 	
 	
+    /**
+     * Sanitize each setting field as needed
+     *
+     * @param array $input Contains all settings fields as array keys
+     */
+    public function sanitize( $input )
+    {
+        $new_input = array();
+		
+		
+// css_file_to_use
+// do_not_load_css
+// load_icon_font
+// icon_font_from_elsewhere
+// panel_default_class
+// css_class_prefix
+// style_edit_mode
 
+		
+        if( isset( $input['css_file_to_use'] ) )
+            $new_input['css_file_to_use'] = esc_url( $input['css_file_to_use'] );
+
+        if( isset( $input['do_not_load_css'] ) )
+            $new_input['do_not_load_css'] = intval( $input['do_not_load_css'] );
+
+        if( isset( $input['load_icon_font'] ) )
+            $new_input['load_icon_font'] = esc_url( $input['load_icon_font'] );		
+		
+        if( isset( $input['icon_font_from_elsewhere'] ) )
+            $new_input['icon_font_from_elsewhere'] = intval( $input['icon_font_from_elsewhere'] );	
+		
+        if( isset( $input['panel_default_class'] ) )
+            $new_input['panel_default_class'] = sanitize_html_class( $input['panel_default_class'] );	
+		
+        if( isset( $input['css_class_prefix'] ) )
+            $new_input['css_class_prefix'] = sanitize_html_class( $input['css_class_prefix'] );	
+		
+        if( isset( $input['style_edit_mode'] ) )
+            $new_input['style_edit_mode'] = intval( $input['style_edit_mode'] );	
+		
+        return $new_input;
+    }
 
 
 

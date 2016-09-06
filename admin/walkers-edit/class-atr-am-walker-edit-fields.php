@@ -254,12 +254,12 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
 
             if (isset($_POST['menu-item-chooseimage' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-chooseimage' . $menu_item_db_id])) {
-                    $chooseimage_value = implode(",", $_POST['menu-item-chooseimage' . $menu_item_db_id]);
+					$chooseimage_value = implode(",", $_POST['menu-item-chooseimage' . $menu_item_db_id]);
                 }
             } else {
                 $chooseimage_value = "0";
             }
-            update_post_meta($menu_item_db_id, '_menu_item_chooseimage', $chooseimage_value);
+            update_post_meta($menu_item_db_id, '_menu_item_chooseimage', intval($chooseimage_value));
             if (isset($_POST['menu-item-panelclass' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-panelclass'])) {
                     $panelclass_value = sanitize_html_classes($_POST['menu-item-panelclass'][$menu_item_db_id]);
@@ -281,19 +281,19 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
             }
             if (isset($_POST['menu-item-remttl' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-remttl'])) {
-                    $remttl_value = $_POST['menu-item-remttl'][$menu_item_db_id];
-                    update_post_meta($menu_item_db_id, '_menu_item_remttl', $remttl_value);
+                    $remttl_value = $_POST['menu-item-remttl'][$menu_item_db_id]; // $_POST['menu-item-remttl'] = 'remove-title'
+                    update_post_meta($menu_item_db_id, '_menu_item_remttl', sanitize_text_field($remttl_value));
                 }
             }
             if (isset($_POST['menu-item-postexcerpt' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-postexcerpt'])) {
-                    $postexcerpt_value = $_POST['menu-item-postexcerpt'][$menu_item_db_id];
+                    $postexcerpt_value = $_POST['menu-item-postexcerpt'][$menu_item_db_id]; // $_POST['menu-item-postexcerpt'] = 'use-excerpt'
                     update_post_meta($menu_item_db_id, '_menu_item_postexcerpt', $postexcerpt_value);
                 }
             }
             if (isset($_POST['menu-item-postfeatimg' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-postfeatimg'])) {
-                    $postfeatimg_value = $_POST['menu-item-postfeatimg'][$menu_item_db_id];
+                    $postfeatimg_value = $_POST['menu-item-postfeatimg'][$menu_item_db_id];// $_POST['menu-item-postfeatimg'] = 'use-post-feat'
                     update_post_meta($menu_item_db_id, '_menu_item_postfeatimg', $postfeatimg_value);
                 }
             }
