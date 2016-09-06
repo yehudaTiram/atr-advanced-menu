@@ -53,15 +53,15 @@ Edit your theme header.php file and replace the call for the menu:
 with: 
 
      <pre><?php 
-    wp_nav_menu( array(
-            'theme_location' => 'primary',
-            'menu_id' => 'primary-menu',
-            'container'       => 'div',
-            'echo'            => true,
-            'items_wrap'      => '<div class="megamenu"><ul>%3$s</ul></div>',							
-            'container_class'    => 'LayoutGrid LayoutCenter PanelDiffuseShadow PanelFillExtraLight',
-            'menu_class' => 'atr_accessible_megamenu',
-            'walker'             => new atr_accessible_megamenu_walker('')) ); 					
+						wp_nav_menu( array(
+							'theme_location' => 'primary',
+							'menu_id' => 'primary-menu',
+							'container'       => 'div',
+							'echo'            => true,
+							'items_wrap'      => '<div class="megamenu"><ul id="%1$s" class="%2$s">%3$s</ul></div>',							
+							'container_class'    => 'LayoutGrid LayoutCenter PanelDiffuseShadow PanelFillExtraLight',
+							'menu_class' => 'atr_accessible_megamenu',
+							'walker'             => new atr_advanced_menu_walker()) ); 					
     ?></pre>	
 
 Note 1: If you use a theme that uses indirect call to the menu definition (mostly in bought themes or themes that use a framework) you'll have to find the correct way to apply the plugin in that theme.

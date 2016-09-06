@@ -81,9 +81,13 @@ class Atr_Advanced_Menu_Admin_Settings {
 
 		$defaults = array(
 			'panel_default_class'		=>	'atr-am',
-			'css_class_prefix'		=>	'atr-am',
-			'load_icon_font'		=>	'',
-			'css_file_to_use'		=>  '',
+			'css_class_prefix'			=>	'atr-am',
+			'load_icon_font'			=>	'',
+			'css_file_to_use'			=>  '',
+			'style_edit_mode'			=>  '',
+			'do_not_load_css'			=>  '',
+			'icon_font_from_elsewhere'	=>  '',
+			
 		);
 
 		return $defaults;
@@ -409,12 +413,14 @@ class Atr_Advanced_Menu_Admin_Settings {
 
         if( isset( $input['do_not_load_css'] ) )
             $new_input['do_not_load_css'] = intval( $input['do_not_load_css'] );
+		else $new_input['do_not_load_css'] = '';
 
         if( isset( $input['load_icon_font'] ) )
             $new_input['load_icon_font'] = esc_url( $input['load_icon_font'] );		
 		
         if( isset( $input['icon_font_from_elsewhere'] ) )
             $new_input['icon_font_from_elsewhere'] = intval( $input['icon_font_from_elsewhere'] );	
+		else $new_input['icon_font_from_elsewhere'] = '';
 		
         if( isset( $input['panel_default_class'] ) )
             $new_input['panel_default_class'] = sanitize_html_class( $input['panel_default_class'] );	
@@ -423,7 +429,8 @@ class Atr_Advanced_Menu_Admin_Settings {
             $new_input['css_class_prefix'] = sanitize_html_class( $input['css_class_prefix'] );	
 		
         if( isset( $input['style_edit_mode'] ) )
-            $new_input['style_edit_mode'] = intval( $input['style_edit_mode'] );	
+            $new_input['style_edit_mode'] = intval( $input['style_edit_mode'] );
+		else $new_input['style_edit_mode'] = '';
 		
         return $new_input;
     }

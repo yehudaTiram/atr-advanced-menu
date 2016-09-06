@@ -86,14 +86,14 @@ class Atr_Advanced_Menu_Public {
         $menu_css_file = 'megamenu.css';	
 		$atr_am_options = get_option( 'atr_advanced_menu_display_options' );
 		 if ( ( ! ( $atr_am_options  === FALSE )) && ($atr_am_options[ 'css_file_to_use' ])) {
-			wp_register_style('custom_menu_css_file', esc_url($atr_am_options[ 'css_file_to_use' ]), array(), $this->_version);
+			wp_register_style('custom_menu_css_file', esc_url($atr_am_options[ 'css_file_to_use' ]), array(), $this->version);
 			wp_enqueue_style('custom_menu_css_file');			 
 		 }
 		elseif ( ( ! ( $atr_am_options  === FALSE )) && ($atr_am_options[ 'do_not_load_css' ])){
 			// Do not load the css file at all
 		}
         else{
-            wp_register_style('menu_css_file', plugin_dir_url( __FILE__ ) . 'menu-templates/' . $menu_css_file , array(), $this->_version);
+            wp_register_style('menu_css_file', plugin_dir_url( __FILE__ ) . 'menu-templates/' . $menu_css_file , array(), $this->version);
 			wp_enqueue_style('menu_css_file');
         }		
 		
@@ -103,7 +103,7 @@ class Atr_Advanced_Menu_Public {
         //$icon_font_file = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
 		 if ( ! ( $atr_am_options === FALSE )) {
 			if (( ! ( $atr_am_options['icon_font_from_elsewhere'] == '1')) && ($atr_am_options['load_icon_font'])) {
-				wp_register_style( 'load_icon_font', esc_url($atr_am_options['load_icon_font']), $this->_version);
+				wp_register_style( 'load_icon_font', esc_url($atr_am_options['load_icon_font']), $this->version);
 				wp_enqueue_style('load_icon_font');				
 			}			 
 		 }		
@@ -146,13 +146,13 @@ class Atr_Advanced_Menu_Public {
 		 /*
 			Load the accessible Mega Menu that runs the menu behaviour
 		 */
-		wp_register_script('accessibleMegaMenu', plugin_dir_url( __FILE__ ) . 'menu-templates/' . $menu_js_file . '.js', array('jquery'), $this->_version);
+		wp_register_script('accessibleMegaMenu', plugin_dir_url( __FILE__ ) . 'menu-templates/' . $menu_js_file . '.js', array('jquery'), $this->version);
 		wp_enqueue_script('accessibleMegaMenu');		
 	
 		 /*
 			Init the accessible Mega Menu that runs the menu behaviour
 		 */
-		wp_register_script('init_accessibleMegaMenu', plugin_dir_url( __FILE__ ) . 'menu-templates/init.js', array('jquery'), $this->_version);
+		wp_register_script('init_accessibleMegaMenu', plugin_dir_url( __FILE__ ) . 'menu-templates/init.js', array('jquery'), $this->version);
 		wp_enqueue_script('init_accessibleMegaMenu');
 	}
 
