@@ -2,6 +2,9 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+ .menu-item-edit-active .menu-item-settings{
+	 float: left;
+ }
  .fields-wrapper-atr-mm {
     background: #eee;
     min-height: 450px;
@@ -31,7 +34,9 @@
 .atr-content-from-post-wrpper {
     float: left;
 }
-
+input#css_file_to_use {
+    width: 500px;
+}
 /*.atr-inline-warning {
   background: rgba(0, 0, 0, 0) url("../../img/dialog_warning.png") no-repeat scroll left top;
   padding: 0 0 4px 25px;

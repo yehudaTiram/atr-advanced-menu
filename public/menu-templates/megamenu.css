@@ -18,6 +18,15 @@ limitations under the License.
 /**************************/
 /* Do not edit this part. It is part of the menu basic functioning.  */
 /**************************/
+/*---------------------- IMPORTAMT NOTE ------------------------------------ *
+*                                                                            *
+*    This file will be overwritten in every update of the plugin.            *
+*    If you write your classes below you will loose all your custom work .   *
+*    Please create all your custom classes in another file like style.css.   * 
+*    You can also use a dedicated css file of you own and apply it from the  *
+*    plugin settings.                                                        *
+*                                                                            *
+*****************************************************************************/
 .accessible-megamenu .accessible-megamenu-top-nav-item {
 	position: relative;
 	display: block;
@@ -67,194 +76,35 @@ limitations under the License.
 	.accessible-megamenu .accessible-megamenu-panel.open {
 		visibility: visible;
 		top: 3em;
-		overflow: visible;
-		min-height: 600px;
 		opacity: 1;
 		z-index: 1001;
 	}
 
-	.accessible-megamenu .accessible-megamenu-panel a {
-		display: block;
-		text-decoration: none;
-		width: auto;
-	}
+
 
 /* Next is for overriding .main-navigation ul ul if present */
-.megamenu .sub-list-0 {
-	float: left;
+.accessible-megamenu-panel .sub-list-0 {
 	left: 0;
-	margin: 0 6px;
 	position: relative;
 	display: flex;
-	padding-top: 1em;
 }
+
 /*</editor-fold>*/
+/* Keep the code above unchange. */
+/**************************/
+/* End of do not edit this part. It is part of the menu basic functioning.  */
+/**************************/
 
-/*<editor-fold desc=".accessible-megamenu-panel.cols">*/
-/*************** Layouts of panel & elements *******************/
-/* These are suggestions only. you can use whatever class names you want */
-/* Just make sure you change the appropriate fields in the menu editor accordingly */
-/**************************************************************/
+/* You can start edit from here.*/
 
-/* Classes for the panel wrapper */
-/* Use in "Panel class - used only in top level items (optional)" text box of the panel parent item. */
+/*---------------------- IMPORTAMT NOTE ------------------------------------ *
+*                                                                            *
+*    This file will be overwritten in every update of the plugin.            *
+*    If you write your classes below you will loose all your custom work .   *
+*    Please create all your custom classes in another file like style.css.   * 
+*    You can also use a dedicated css file of you own and apply it from the  *
+*    plugin settings.                                                        *
+*                                                                            *
+*****************************************************************************/
 
-.panel-50x22em {
-	/*height: 22em;*/
-	width: 55em;
-}
-
-.panel-50x20em {
-	/*height: 20em;*/
-	width: 50em;
-}
-
-.panel-form {
-	/*height: 19em;*/
-	width: 15em;
-}
-
-.panel-50x22em-a {
-	width: 450px;
-}
-
-.panel-23x44em {
-	/*height: 23em;*/
-	width: 44em;
-}
-
-/* Classes for layout of the panel inner items */
-/* Use in WP menu editor "CSS Classes (optional)" text box of the panel inner items. */
-.atr-am-onethird {
-	width: 32%;
-}
-
-.atr-am-twothirds {
-	width: 65%;
-}
-
-.atr-am-half {
-	width: 50%;
-}
-
-.panel-50x22em-a ul li {
-	float: left;
-	width: 200px;
-}
-
-.panel-23x44em.accessible-megamenu-panel > ul > li.atr-am-monkey {
-	border: medium none;
-	width: 356px;
-}
-
-.panel-2-cols li {
-	margin: 1%;
-	width: 48%;
-}
-/*************** End Layouts of panel & elements *******************/
-
-/* Design */
-.megamenu {
-}
-
-	.megamenu .accessible-megamenu {
-		height: 56px;
-		background: #333 none repeat scroll 0 0;
-		border-bottom: 1px solid #090909;
-		border-top: 1px solid #444;
-		margin: 0;
-	}
-
-ul.accessible-megamenu > li {
-	border-left: 1px solid #444;
-	border-right: 1px solid #090909;
-	list-style: none;
-}
-
-	ul.accessible-megamenu > li.accessible-megamenu-top-nav-item > a {
-		color: #ccc;
-		display: block;
-		padding: 6px 7px;
-		text-decoration: none;
-	}
-
-		ul.accessible-megamenu > li.accessible-megamenu-top-nav-item > a .menu-item-title-att {
-			font-size: 0.7em;
-			margin: 0 0 0 26px;
-		}
-
-ul.accessible-megamenu li {
-	list-style: none;
-}
-
-
-
-ul.accessible-megamenu > li > a img, ul.accessible-megamenu > li > a b {
-	float: left;
-	height: auto;
-	margin: 3px 6px 0 0;
-	max-width: 19px;
-}
-
-.accessible-megamenu .accessible-megamenu-panel {
-	display: flex;
-	background: #333 none repeat scroll 0 0;
-	border-bottom: 1px solid #090909;
-	border-top: 1px solid #444;
-	border-right: 1px solid #090909;
-	border-left: 1px solid #444;
-}
-
-	.accessible-megamenu .accessible-megamenu-panel .atr-am-menu-thumb > img {
-		border: 1px solid #ccc;
-		float: left;
-		margin: 0 12px;
-		width: 55px;
-	}
-
-	.accessible-megamenu .accessible-megamenu-panel ul.sub-list-0 > li {
-		float: left;
-		background: rgba(179, 179, 179, 0.2) none repeat scroll 0 0;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-		float: left;
-		margin: 5px;
-		padding: 6px 12px;
-	}
-
-	.accessible-megamenu .accessible-megamenu-panel ul.sub-list-1 > li {
-		background: rgba(179, 179, 179, 0.2) none repeat scroll 0 0;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-		float: left;
-		margin: 5px;
-		padding: 6px 12px;
-	}
-
-	.accessible-megamenu .accessible-megamenu-panel, .accessible-megamenu .accessible-megamenu-panel a {
-		color: #cfcfcf;
-	}
-
-		.accessible-megamenu .accessible-megamenu-panel .sub-list-1, .accessible-megamenu .accessible-megamenu-panel .sub-list-2, .accessible-megamenu .accessible-megamenu-panel .sub-list-3, .accessible-megamenu .accessible-megamenu-panel .sub-list-4 {
-			box-shadow: none;
-			float: left;
-			left: auto;
-			position: relative;
-			margin: 0;
-		}
-
-		.accessible-megamenu .accessible-megamenu-panel .sub-list-0 li.home-sub-1 .sub-list-1 > li {
-			width: 47%;
-		}
-
-		.accessible-megamenu .accessible-megamenu-panel .sub-list-0 li {
-			float: left;
-			margin: 0 0 13px;
-		}
-
-			.accessible-megamenu .accessible-megamenu-panel .sub-list-0 li > a {
-				float: left;
-				width: 100%;
-				background: rgba(179, 179, 179, 0.2) none repeat scroll 0 0;
-				box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-				margin: 5px;
-				padding: 6px 12px;
-			}
+	

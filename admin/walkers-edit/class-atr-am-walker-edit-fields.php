@@ -251,15 +251,19 @@ class Atr_Advanced_Menu_Walker_Edit_Fields {
                     update_post_meta($menu_item_db_id, '_menu_item_customimage', $customimage_value);
                 }
             }
-
+			//$chooseimage_value = ''; // v1.0.1 changed all chooseimagehere because it got empty when saved all the menu ("save menu button")
             if (isset($_POST['menu-item-chooseimage' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-chooseimage' . $menu_item_db_id])) {
-					$chooseimage_value = implode(",", $_POST['menu-item-chooseimage' . $menu_item_db_id]);
+					//$chooseimage_value = implode(",", $_POST['menu-item-chooseimage' . $menu_item_db_id]);
+					$chooseimage_value = $_POST['menu-item-chooseimage'][$menu_item_db_id];
+					update_post_meta($menu_item_db_id, '_menu_item_chooseimage', intval($chooseimage_value));
                 }
-            } else {
-                $chooseimage_value = "0";
-            }
-            update_post_meta($menu_item_db_id, '_menu_item_chooseimage', intval($chooseimage_value));
+				} else {
+					$chooseimage_value = "0";
+					update_post_meta($menu_item_db_id, '_menu_item_chooseimage', intval($chooseimage_value));
+				}
+            
+			//update_post_meta($menu_item_db_id, '_menu_item_chooseimage', 888);
             if (isset($_POST['menu-item-panelclass' . $menu_item_db_id])) {
                 if (is_array($_POST['menu-item-panelclass'])) {
                     $panelclass_value = sanitize_html_classes($_POST['menu-item-panelclass'][$menu_item_db_id]);

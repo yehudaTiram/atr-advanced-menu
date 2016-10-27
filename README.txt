@@ -3,8 +3,8 @@ Contributors: yehudaT
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T6VTA75GTS3YA
 Tags: plugin, menu, mega menu, custom Walker_Nav_Menu
 Requires at least: 3.9
-Tested up to: 4.6
-Stable tag: 1.0.0
+Tested up to: 4.6.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
@@ -102,6 +102,16 @@ If you do not know how to do it please ask some one who knows.
 Yes. You can navigate between the items by your keyboard.
 
 == Changelog ==
+= 1.0.2 =
+* 2016-9-09
+Checked for WP 4.6.1
+Made the settings mor clear
+Change settings behaviour. 
+megamenu.css now loads only the mandatory classes
+
+= 1.0.1 =
+* 2016-9-08
+Fixed undefined chooseimage var
 
 = 1.0 =
 * 2016-9-05

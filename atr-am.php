@@ -16,7 +16,7 @@
  * Plugin Name:       ATR advanced menu
  * Plugin URI:        http://atarimtr.com
  * Description:       Create highly cusomizable dropdown or mega menu with icons, posts, thumbnails etc using standard Wordpress menu editing page. The plugin requires editing the header.php file.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            Yehuda Tiram
  * Author URI:        http://www.atarimtr.com/
  * License:           GPL-2.0+

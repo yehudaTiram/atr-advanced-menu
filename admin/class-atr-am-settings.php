@@ -172,23 +172,24 @@ class Atr_Advanced_Menu_Admin_Settings {
 		
 		add_settings_field(
 			'css_file_to_use',
-			__( 'Alternate CSS file url', 'atr-advanced-menu' ),
+			__( 'CSS file url', 'atr-advanced-menu' ),
 			array( $this, 'css_file_to_use_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( '<br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Leave empty in order to use the plugin’s default "megamenu.css" file (stored in /wp-content/plugins/atr-advanced-menu/public/menu-templates/megamenu.css).<br />Or, if you want to use your own CSS file for the menu:<br />1. Create a css file with the styles you want.<br />2. Write here in the textbox the new file URL.<br /><span class="atr-inline-red"><strong>3. Important:</strong></span> Your CSS file must include some basic classes for the menu to work properly. See in the plugin’s "megamenu.css" file what is mandatory for the menu to work.', 'atr-advanced-menu' ),
+				__( 'Leave empty if you write the menu css classes in style.css (in your active theme).<br />
+				If you want a dedicated css file, write its URL here.<br />For first time use, try inserting here the URL: http://yoursite.com/wp-content/plugins/atr-advanced-menu/public/menu-templates/atr-megamenu-black.css<br />This is a black demo skin provided to get the feel of the plugin effect.', 'atr-advanced-menu' ),
 			)
 		); 
 		
 		add_settings_field(
 			'do_not_load_css',
-			__( 'Do not load any CSS file<br /><span class="atr-inline-red"><strong>Please make sure "Alternate CSS file url" above is empty.</strong></span>', 'atr-advanced-menu' ),
+			__( 'Do not load any CSS file', 'atr-advanced-menu' ),
 			array( $this, 'do_not_load_css_callback'),
 			'atr_advanced_menu_display_options',
 			'general_settings_section',			        // The name of the section to which this field belongs
 			array(								        // The array of arguments to pass to the callback. In this case, just a description.
-				__( '<br /><span class="atr-inline-optional"><strong>Optional</strong></span> - Check this if you included all the css classes needed for the menu in some other file like style.css which is loaded elsewhere.<br />This CSS file <span class="atr-inline-red"><strong>must</strong></span> include some basic classes for the menu to work properly. See in the plugin’s "megamenu.css" file what is mandatory for the menu to work.<br /><span class="atr-inline-red"><strong>Please make sure "Alternate CSS file url" above is empty.</strong></span>', 'atr-advanced-menu' ),
+				__( '<span class="atr-inline-red"><strong>It will prevent the load of any CSS file by the plugin</strong></span>.<br />In that case you must include some basic CSS classes in your theme for the menu to work properly. See what is mandatory for the menu to work <a target="_blank" href="http://www.atarimtr.com/atr-advanced-menu/mandatory-css-classes-atr/">here</a>.', 'atr-advanced-menu' ),
 			)
 		); 
 		

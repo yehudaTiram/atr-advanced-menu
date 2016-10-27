@@ -249,7 +249,7 @@ function atr_saveitem_callback(){
 	update_post_meta( $my_post_id, '_menu_item_url', esc_url($_POST['url']));
 	update_post_meta( $my_post_id, '_menu_item_subtitle', sanitize_text_field($_POST['subtitle']));
 	update_post_meta( $my_post_id, '_menu_item_customimage', esc_url($_POST['customimage']));
-	update_post_meta( $my_post_id, '_menu_item_chooseimage', esc_attr($_POST['chooseimage'])); // a number to select between image options
+	update_post_meta( $my_post_id, '_menu_item_chooseimage', abs( intval($_POST['chooseimage']))); // v1.0.1: change esc_attr to abs intval //a number to select between image options 
         update_post_meta( $my_post_id, '_menu_item_panelclass', sanitize_html_classes($_POST['panelclass']));
         update_post_meta( $my_post_id, '_menu_item_iconclass', sanitize_html_classes($_POST['iconclass']));
         update_post_meta( $my_post_id, '_menu_item_content_from_post', intval($_POST['content_from_post']));
